@@ -14,5 +14,4 @@ otherAdd = \a b -> a + b
 
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
-  logShow $ add 1 2
-  logShow $ otherAdd 1.0 2.1
+  logShow $ flip const 2 3
