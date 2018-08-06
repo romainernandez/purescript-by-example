@@ -6,7 +6,9 @@ import Control.Monad.Eff.Console (CONSOLE, logShow)
 
 author = { name: "Phil", interests: ["Functional Programming", "Javascript"]}
 
+add :: Int -> Int -> Int
+add a b = a + b
+
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
-  logShow author.name
-  logShow author.interests
+  logShow $ add 1 2
