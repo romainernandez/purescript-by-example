@@ -12,6 +12,10 @@ add a b = a + b
 otherAdd :: Number -> Number -> Number
 otherAdd = \a b -> a + b
 
+indentedAdd :: Int -> Int -> Int
+indentedAdd a b = a
+  + b
+
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
-  logShow $ flip const 2 3
+  logShow $ flip indentedAdd 2 3
