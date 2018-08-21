@@ -3,6 +3,7 @@ module Main where
 import Prelude
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (CONSOLE, logShow)
+import Data.AddressBook
 
 author = { name: "Phil", interests: ["Functional Programming", "Javascript"]}
 
