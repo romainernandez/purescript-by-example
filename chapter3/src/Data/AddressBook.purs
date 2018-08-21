@@ -16,3 +16,13 @@ type Address = {
 }
 
 type AddressBook = List Entry
+
+showEntry :: Entry -> String
+showEntry entry = entry.firstName <> ", " <>
+                  entry.lastName <> ", " <>
+                  showAdress entry.address
+
+showAdress :: Address -> String
+showAdress address = address.street <> ", " <>
+                  address.city <> ", " <>
+                  address.state

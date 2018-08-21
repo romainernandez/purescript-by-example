@@ -1,9 +1,9 @@
 module Main where
 
-import Prelude
+import Prelude (Unit, (*), (+), ($))
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (CONSOLE, logShow)
-import Data.AddressBook
+import Data.AddressBook (showEntry)
 
 author = { name: "Phil", interests: ["Functional Programming", "Javascript"]}
 
@@ -21,8 +21,20 @@ exemple :: Int -> Int -> Int -> Int
 exemple x y z = foo + bar
   where
     foo = x * y
-    bar = y * z 
+    bar = y * z
+
+exempleAdress = {
+  street: "221b Baker St",
+  city: "London",
+  state: "UK"
+}
+
+exempleEntry = {
+  firstName: "Sherlock",
+  lastName: "Holmes",
+  address: exempleAdress
+}
 
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
-  logShow $ flip exemple 1 2 3
+  logShow $ showEntry exempleEntry
