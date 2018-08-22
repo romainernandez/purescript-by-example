@@ -1,10 +1,9 @@
 module Main where
 
-import Prelude (Unit, (*), (+), ($), (>=))
+import Prelude
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (CONSOLE, logShow)
-import Data.AddressBook (showEntry)
-import Data.List (filter, (..))
+import Data.AddressBook (Entry, Address, filterEntry)
 
 author = { name: "Phil", interests: ["Functional Programming", "Javascript"]}
 
@@ -28,17 +27,18 @@ exempleAdress = {
   street: "221b Baker St",
   city: "London",
   state: "UK"
-}
+} :: Address
 
 exempleEntry = {
   firstName: "Sherlock",
   lastName: "Holmes",
   address: exempleAdress
-}
+}  :: Entry
 
 gte2 :: Int -> Boolean
 gte2 x = x >= 2
 
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
-  logShow $ filter gte2 (1..3)
+  logShow $ filterEntry "Roger" "Rabbit" exempleEntry
+  logShow $ filterEntry "Sherlock" "Holmes" exempleEntry
