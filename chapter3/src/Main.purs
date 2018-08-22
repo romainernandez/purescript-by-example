@@ -5,7 +5,6 @@ import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (CONSOLE, logShow)
 import Data.AddressBook
 import Data.List (filter, (..))
-import Data.Foldable (for_)
 
 author = { name: "Phil", interests: ["Functional Programming", "Javascript"]}
 
@@ -44,4 +43,5 @@ gte2 x = x >= 2
 
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
-  logShow $ findEntry "Mau" "Rice" exempleAdressBook
+  logShow (filter gte2 (1..5))
+  logShow $ filter gte2 (1..5)
