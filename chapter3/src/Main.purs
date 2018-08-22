@@ -1,6 +1,6 @@
 module Main where
 
-import Prelude (Unit, (*), (+), ($))
+import Prelude (Unit, (*), (+), ($), (>=))
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (CONSOLE, logShow)
 import Data.AddressBook (showEntry)
@@ -35,6 +35,9 @@ exempleEntry = {
   address: exempleAdress
 }
 
+gte2 :: Int -> Boolean
+gte2 x = x >= 2
+
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
-  logShow $ showEntry exempleEntry
+  logShow $ gte2 2
