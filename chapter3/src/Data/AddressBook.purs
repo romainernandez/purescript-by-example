@@ -3,6 +3,7 @@ module Data.AddressBook where
 import Prelude
 import Data.List.Lazy.Types (List, cons)
 import Control.Plus (empty)
+import Data.List (head, filter)
 
 type Entry = {
   firstName :: String,
@@ -34,5 +35,8 @@ emptyBook = empty
 insertEntry :: Entry -> AddressBook -> AddressBook
 insertEntry  = cons
 
-filterEntry :: String -> String -> Entry -> Boolean
-filterEntry firstName lastName entry = firstName == entry.firstName && lastName == entry.lastName
+findEntry firstName lastName addressBook = head $ filter filterEntry addressBook
+  where
+    filterEntry :: Entry -> Boolean
+    filterEntry entry = firstName == entry.firstName && lastName == entry.lastName
+

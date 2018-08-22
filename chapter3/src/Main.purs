@@ -3,7 +3,9 @@ module Main where
 import Prelude
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (CONSOLE, logShow)
-import Data.AddressBook (Entry, Address, filterEntry)
+import Data.AddressBook
+import Data.List (filter, (..))
+import Data.Foldable (for_)
 
 author = { name: "Phil", interests: ["Functional Programming", "Javascript"]}
 
@@ -35,10 +37,11 @@ exempleEntry = {
   address: exempleAdress
 }  :: Entry
 
+exempleAdressBook = insertEntry exempleEntry emptyBook :: AddressBook
+
 gte2 :: Int -> Boolean
 gte2 x = x >= 2
 
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
-  logShow $ filterEntry "Roger" "Rabbit" exempleEntry
-  logShow $ filterEntry "Sherlock" "Holmes" exempleEntry
+  logShow $ findEntry "Mau" "Rice" exempleAdressBook
