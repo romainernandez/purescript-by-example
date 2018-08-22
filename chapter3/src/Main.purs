@@ -4,6 +4,7 @@ import Prelude (Unit, (*), (+), ($), (>=))
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (CONSOLE, logShow)
 import Data.AddressBook (showEntry)
+import Data.List (filter, (..))
 
 author = { name: "Phil", interests: ["Functional Programming", "Javascript"]}
 
@@ -40,4 +41,4 @@ gte2 x = x >= 2
 
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
-  logShow $ gte2 2
+  logShow $ filter gte2 (1..3)
