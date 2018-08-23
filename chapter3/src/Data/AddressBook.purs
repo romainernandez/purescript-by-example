@@ -35,7 +35,7 @@ emptyBook = empty
 insertEntry :: Entry -> AddressBook -> AddressBook
 insertEntry  = cons
 
-findEntry firstName lastName addressBook = head $ filter filterEntry addressBook
+findEntry firstName lastName = head $ filter filterEntry
   where
     filterEntry :: Entry -> Boolean
     filterEntry entry = firstName == entry.firstName && lastName == entry.lastName
