@@ -1,9 +1,10 @@
 module Data.AddressBook where
 
 import Prelude
-import Data.List.Lazy.Types (List, cons)
+
 import Control.Plus (empty)
-import Data.List (head, filter)
+import Data.List (List(..), filter, head)
+import Data.Maybe (Maybe)
 
 type Entry = {
   firstName :: String,
@@ -33,8 +34,9 @@ emptyBook :: AddressBook
 emptyBook = empty
 
 insertEntry :: Entry -> AddressBook -> AddressBook
-insertEntry  = cons
+insertEntry  = Cons
 
+findEntry :: String -> String -> AddressBook -> Maybe Entry
 findEntry firstName lastName = head <<< filter filterEntry
   where
     filterEntry :: Entry -> Boolean
