@@ -42,3 +42,4 @@ findEntry firstName lastName = head <<< filter filterEntry
     filterEntry :: Entry -> Boolean
     filterEntry entry = firstName == entry.firstName && lastName == entry.lastName
 
+printEntry firstName lastName addressBook = map showEntry $ findEntry firstName lastName addressBook
