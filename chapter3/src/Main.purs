@@ -41,7 +41,15 @@ exempleAdressBook = insertEntry exempleEntry emptyBook :: AddressBook
 gte2 :: Int -> Boolean
 gte2 x = x >= 2
 
+add5 :: Number -> Number
+add5 = otherAdd 5.0
+
+add6 :: Number -> Number
+add6 = otherAdd 6.0
+
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
   logShow (filter gte2 (1..5))
   logShow $ filter gte2 (1..5)
+  -- see https://stackoverflow.com/questions/29881695/what-does-the-triple-less-than-sign-do-in-purescript
+  logShow $ add5 2.0
