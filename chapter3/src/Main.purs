@@ -47,9 +47,12 @@ add5 = otherAdd 5.0
 mult2 :: Number -> Number
 mult2 x = x * 2.0
 
+add5mult2 :: Number -> Number
+add5mult2 = mult2 <<< add5
+
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
   logShow (filter gte2 (1..5))
   logShow $ filter gte2 (1..5)
   -- see https://stackoverflow.com/questions/29881695/what-does-the-triple-less-than-sign-do-in-purescript
-  logShow $ mult2 $ add5 2.0
+  logShow $ add5mult2 2.0
