@@ -3,7 +3,7 @@ module Test.Main where
 import Prelude
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (CONSOLE, logShow)
-import Data.AddressBook (Address, AddressBook, Entry, emptyBook, findEntry, insertEntry, showEntry, printEntry)
+import Data.AddressBook (Address, AddressBook, Entry, emptyBook, findEntry, insertEntry, showEntry, printEntry, findEntryWithStreetAddress)
 
 author = { name: "Phil", interests: ["Functional Programming", "Javascript"]}
 
@@ -51,5 +51,4 @@ add5mult2 = mult2 <<< add5
 
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
-  logShow $ printEntry "John" "Deuf" exempleAdressBook
-  logShow $ printEntry "Sherlock" "Holmes" exempleAdressBook
+  logShow $ map showEntry $ findEntryWithStreetAddress "221b Baker St" exempleAdressBook
